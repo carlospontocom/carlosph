@@ -1,51 +1,31 @@
-import { Wrapper } from "../../GlobalStyles";
-import { FooterStyle, Title, Coll, ItemList } from "./Footer.styles";
+import { FooterContainer, FooterTitle, FooterColumn, FooterItem, FooterWrapper,FooterBottom } from "./Footer.styles";
 
 export default function Footer() {
     return (
-        <>
-            <FooterStyle>
-                <Wrapper>
-                    <Title>
-                        ReactTool
-                    </Title>
+        <FooterContainer>
+            <FooterWrapper>
+                <FooterTitle>ReactTool</FooterTitle>
+                <FooterColumn>
+                    <FooterItem>Sobre o Projeto</FooterItem>
+                     <FooterItem>Carreiras</FooterItem>
+                    <FooterItem>Documentação</FooterItem>
+                </FooterColumn>
 
-                    <Coll>
-                        <ItemList>
-                            Docs Developed
-                        </ItemList>
-                        <ItemList>
-                            Linguagem Rct
-                        </ItemList>
-                        <ItemList>
-                            Código JavaScript
-                        </ItemList>
+                <FooterColumn>
+                    <FooterItem>Blogs adicionais</FooterItem>
+                    <FooterItem>Novidades</FooterItem>
+                    <FooterItem>Canais importantes</FooterItem>
+                </FooterColumn>
 
-
-                        <ItemList>
-                            Docs Developed
-                        </ItemList>
-                        <ItemList>
-                            Linguagem Rct
-                        </ItemList>
-                        <ItemList>
-                            Código JavaScript
-                        </ItemList>
-
-
-
-                        <ItemList>
-                            Docs Developed
-                        </ItemList>
-                        <ItemList>
-                            Linguagem Rct
-                        </ItemList>
-                        <ItemList>
-                            Código JavaScript
-                        </ItemList>
-                    </Coll>
-                </Wrapper>
-            </FooterStyle>
-        </>
-    )
+                <FooterColumn>
+                    <FooterItem>Suporte</FooterItem>
+                    <FooterItem>Política de Privacidade</FooterItem>
+                    <FooterItem>Termos de Uso</FooterItem>
+                </FooterColumn>
+            </FooterWrapper>
+            <FooterBottom>
+                <p>ReactTool © 2022</p>
+            </FooterBottom>
+        </FooterContainer>
+    );
 }
