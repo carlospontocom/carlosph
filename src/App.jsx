@@ -1,10 +1,9 @@
-import Footer from "./components/Footer/Footer";
- 
-
 function App() {
   return (
     <>
-            <Footer/>
+          <h1>
+            bem vindo
+          </h1>
      </>
   );
 }
