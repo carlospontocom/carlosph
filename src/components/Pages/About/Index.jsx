@@ -2,6 +2,7 @@ import styles from './About.module.css';
 
 function About() {
     return (
+        
         <div className={styles.aboutContainer}>
             <h1 className={styles.title}>Sobre Nós</h1>
             <p className={styles.text}>

@@ -1,0 +1,43 @@
+@import url('https://fonts.cdnfonts.com/css/militech');
+
+/* Paleta: Azul Marinho (quase preto) para Roxo Índigo Profundo */
+.bgSection{
+   background: #0D1B2A; /* Azul Marinho Escuro */
+   background: linear-gradient(70deg, rgba(13, 27, 42, 1) 0%, rgba(47, 48, 87, 1) 50%);
+}
+
+.homeContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+     min-height: 80vh;
+    gap: 1.5em;
+ }
+
+ .homeContainer h1{
+    font-size: 56px;
+    text-align: center;
+    max-width: 700px;
+    font-family: 'militech', sans-serif;
+    letter-spacing: 4px;
+    color: whitesmoke;
+}
+
+ .homeContainer p{
+   color: whitesmoke;
+   font-size: 23px;
+    line-height: 160%;
+    text-align: center;
+     max-width: 760px;
+     font-family: 'militech', sans-serif;
+     letter-spacing: 2px;
+  }
+
+ .buttonsContainer{
+    display: flex;
+    letter-spacing: 2px;
+    flex-direction: row;
+     gap:.5rem;
+ }

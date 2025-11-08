@@ -18,7 +18,7 @@ function Header() {
                                 <NavLink to="/">Home</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/about">Sobre</NavLink>
+                                <NavLink to="/sobre">Sobre</NavLink>
                             </li>
                             <li>
                                 <NavLink to="/formulario">Cadastre-se</NavLink>

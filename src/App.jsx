@@ -1,9 +1,11 @@
 import './App.css';
-import Paths from './components/Routes/Paths';
+import Profiction from './components/Pages/Home/Profiction/Index';
+// import Paths from './components/Routes/Paths';
 
 function App() {
   return (
-    <Paths />
+    // <Paths />
+    <Profiction/>
   );
 }
 
