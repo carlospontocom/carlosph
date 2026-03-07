@@ -1,11 +1,10 @@
-import './App.css';
-import Profiction from './components/Pages/Home/Profiction/Index';
-// import Paths from './components/Routes/Paths';
+import React from "react";
 
 function App() {
   return (
-    // <Paths />
-    <Profiction/>
+    <div>
+      <h1>Bem vindo</h1>
+    </div>
   );
 }
 
