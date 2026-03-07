@@ -1,10 +1,9 @@
-import React from "react";
+import React from 'react';
+import Home from './Componentes/Home';
 
 function App() {
   return (
-    <div>
-      <h1>Bem vindo</h1>
-    </div>
+    <Home />
   );
 }
 
