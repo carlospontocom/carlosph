@@ -26,7 +26,7 @@ const Footer = () => {
         <div className="space-y-4">
           <h3 className="text-xl font-bold">Navegação</h3>
           <ul className="space-y-2">
-            <li><a href="#sobre" className="hover:text-blue-400 transition-colors">Sobre</a></li>
+            <li><a href="#inicio" className="hover:text-blue-400 transition-colors">Início</a></li>
             <li><a href="#projetos" className="hover:text-blue-400 transition-colors">Projetos</a></li>
             <li><a href="#contato" className="hover:text-blue-400 transition-colors">Contato</a></li>
           </ul>
