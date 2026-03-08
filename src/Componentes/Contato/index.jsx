@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import { emailjsConfig } from '../../emailjs-config';
 import Campo from '../Campo';
 import Button from '../Button';
 import Textarea from '../Textarea';
@@ -6,6 +8,7 @@ import Select from '../Select';
 import ModalSucesso from '../ModalSucesso';
 
 const Contato = () => {
+  const form = useRef();
   const servicosOptions = [
     'Selecionar serviço',
     'Suporte Técnico',
@@ -27,6 +30,7 @@ const Contato = () => {
   const [formData, setFormData] = useState(initialFormState);
   const [errors, setErrors] = useState({});
   const [showModal, setShowModal] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,12 +51,23 @@ const Contato = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validate()) {
-      console.log('Formulário enviado com sucesso!', formData);
-      setShowModal(true);
-      setFormData(initialFormState);
-      setErrors({});
-    }
+    if (!validate() || isSending) return;
+
+    setIsSending(true);
+
+    emailjs.send(emailjsConfig.serviceID, emailjsConfig.templateID, formData, emailjsConfig.publicKey)
+      .then((result) => {
+          console.log('E-mail enviado com sucesso!', result.text);
+          setShowModal(true);
+          setFormData(initialFormState);
+          setErrors({});
+      }, (error) => {
+          console.error('Falha ao enviar o e-mail:', error.text);
+          // Opcional: Adicionar um modal de erro aqui
+      })
+      .finally(() => {
+          setIsSending(false);
+      });
   };
 
   const closeModal = () => {
@@ -68,9 +83,10 @@ const Contato = () => {
         </div>
 
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-          <form onSubmit={handleSubmit}>
+          <form ref={form} onSubmit={handleSubmit}>
+            {/* Os campos do formulário permanecem os mesmos */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Campo 
+               <Campo 
                 label="Seu nome"
                 placeholder="Carlos Nascimento"
                 name="nome"
@@ -113,11 +129,15 @@ const Contato = () => {
                 error={errors.mensagem}
               />
             </div>
-            <p className="text-center py-4 text-gray-600 text-sm">
+             <p className="text-center py-4 text-gray-600 text-sm">
               Retornamos contato em até 48hs após envio.
             </p>
             <div className="mt-8 text-center">
-              <Button text="Enviar Mensagem" type="submit" />
+                <Button 
+                    text={isSending ? 'Enviando...' : 'Enviar Mensagem'} 
+                    type="submit" 
+                    disabled={isSending}
+                />
             </div>
           </form>
         </div>
