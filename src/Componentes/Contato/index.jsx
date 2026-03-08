@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { emailjsConfig } from '../../emailjs-config';
 import Campo from '../Campo';
 import Button from '../Button';
 import Textarea from '../Textarea';
@@ -32,9 +31,25 @@ const Contato = () => {
   const [showModal, setShowModal] = useState(false);
   const [isSending, setIsSending] = useState(false);
 
+  const formatPhone = (value) => {
+    if (!value) return value;
+    const phoneNumber = value.replace(/[^\d]/g, '');
+    const phoneNumberLength = phoneNumber.length;
+
+    if (phoneNumberLength < 3) return `(${phoneNumber}`;
+    if (phoneNumberLength < 8) return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2)}`;
+    return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2, 7)}-${phoneNumber.slice(7, 11)}`;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+
+    if (name === 'telefone') {
+      const formattedPhone = formatPhone(value);
+      setFormData(prev => ({ ...prev, [name]: formattedPhone }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const validate = () => {
@@ -55,7 +70,11 @@ const Contato = () => {
 
     setIsSending(true);
 
-    emailjs.send(emailjsConfig.serviceID, emailjsConfig.templateID, formData, emailjsConfig.publicKey)
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    emailjs.send(serviceID, templateID, formData, publicKey)
       .then((result) => {
           console.log('E-mail enviado com sucesso!', result.text);
           setShowModal(true);
@@ -84,7 +103,6 @@ const Contato = () => {
 
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
           <form ref={form} onSubmit={handleSubmit}>
-            {/* Os campos do formulário permanecem os mesmos */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                <Campo 
                 label="Seu nome"
@@ -109,6 +127,7 @@ const Contato = () => {
                 name="telefone"
                 value={formData.telefone}
                 onChange={handleChange}
+                maxLength="15"
               />
               <Select 
                 label="Assunto" 
