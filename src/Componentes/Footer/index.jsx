@@ -5,9 +5,9 @@ import { SiVercel } from 'react-icons/si';
 const Footer = () => {
   const socialLinks = [
     { icon: <FaWhatsapp />, url: 'https://wa.me/5511999999999', name: 'WhatsApp' },
-    { icon: <FaGithub />, url: 'https://github.com/carlospontocom', name: 'GitHub' },
+    { icon: <FaGithub />, url: 'https://github.com/frontend', name: 'GitHub' },
     { icon: <SiVercel />, url: 'https://vercel.com/seu-usuario', name: 'Vercel' },
-    { icon: <FaLinkedin />, url: 'https://linkedin.com/in/carlos-nascimento-dev', name: 'LinkedIn' },
+    { icon: <FaLinkedin />, url: 'https://linkedin.com/in/frontend', name: 'LinkedIn' },
     ];
 
   return (
@@ -16,7 +16,7 @@ const Footer = () => {
         
         {/* Coluna 1: Sobre */}
         <div className="space-y-4">
-          <h3 className="text-xl font-bold">Carlos Nascimento</h3>
+          <h3 className="text-xl font-bold">Frontend</h3>
           <p className="text-gray-400">
             Desenvolvedor Full Stack apaixonado por criar experiências web incríveis.
           </p>
@@ -54,7 +54,7 @@ const Footer = () => {
 
       {/* Linha de Copyright */}
       <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500">
-        <p>&copy; {new Date().getFullYear()} Carlos Nascimento. Todos os direitos reservados.</p>
+        <p>&copy; {new Date().getFullYear()} Frontend. Todos os direitos reservados.</p>
       </div>
     </footer>
   );

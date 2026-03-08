@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Header = () => {
@@ -16,21 +17,36 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Nome */}
           <div className="flex-shrink-0">
-            <a href="#inicio" className="text-xl font-bold text-gray-800">Carlos Nascimento</a>
+            <a href="/" className="text-xl font-bold text-gray-800">Frontend::</a>
           </div>
 
           {/* Navegação para Desktop */}
-          <nav className="hidden md:block">
+          <nav className="hidden md:flex items-center">
             <div className="ml-10 flex items-baseline space-x-4">
               {navLinks.map((link) => (
                 <a
                   key={link.title}
                   href={link.path}
-                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:text-gray-900 focus:bg-gray-100 transition duration-150 ease-in-out"
+                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition duration-150 ease-in-out"
                 >
                   {link.title}
                 </a>
               ))}
+            </div>
+            {/* Botão de Login e Cadastro */}
+            <div className="ml-4 flex items-center">
+                <Link 
+                    to="/login"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 transition duration-150 ease-in-out"
+                >
+                    Login
+                </Link>
+                <Link 
+                    to="/cadastro"
+                    className="ml-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-cyan-700 bg-cyan-100 hover:bg-cyan-200 transition duration-150 ease-in-out"
+                >
+                    Cadastre-se
+                </Link>
             </div>
           </nav>
 
@@ -55,11 +71,25 @@ const Header = () => {
                 key={link.title}
                 href={link.path}
                 onClick={() => setIsOpen(false)} // Fecha o menu ao clicar
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition duration-150 ease-in-out"
               >
                 {link.title}
               </a>
             ))}
+             <Link 
+                to="/login"
+                onClick={() => setIsOpen(false)}
+                className="block w-full text-left px-3 py-2 mt-2 rounded-md text-base font-medium text-white bg-cyan-600 hover:bg-cyan-700 transition duration-150 ease-in-out"
+            >
+                Login
+            </Link>
+             <Link 
+                to="/cadastro"
+                onClick={() => setIsOpen(false)}
+                className="block w-full text-left px-3 py-2 mt-2 rounded-md text-base font-medium text-cyan-700 bg-cyan-100 hover:bg-cyan-200 transition duration-150 ease-in-out"
+            >
+                Cadastre-se
+            </Link>
           </div>
         </div>
       )}

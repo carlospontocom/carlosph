@@ -82,7 +82,6 @@ const Contato = () => {
           setErrors({});
       }, (error) => {
           console.error('Falha ao enviar o e-mail:', error.text);
-          // Opcional: Adicionar um modal de erro aqui
       })
       .finally(() => {
           setIsSending(false);
@@ -94,19 +93,19 @@ const Contato = () => {
   };
 
   return (
-    <section id="contato" className="bg-gray-50 py-20">
+    <section id="contato" className="bg-gray-200 py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900">Vamos conversar?</h2>
           <p className="mt-4 text-lg text-gray-600">Estou sempre aberto a novas oportunidades e colaborações. Preencha o formulário abaixo.</p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+        <div className="bg-gray-50 rounded-2xl shadow-xl p-8 md:p-12">
           <form ref={form} onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                <Campo 
                 label="Seu nome"
-                placeholder="Carlos Nascimento"
+                placeholder="Frontend"
                 name="nome"
                 value={formData.nome}
                 onChange={handleChange}
