@@ -7,7 +7,7 @@ const Footer = () => {
     { icon: <FaWhatsapp />, url: 'https://wa.me/5511999999999', name: 'WhatsApp' },
     { icon: <FaGithub />, url: 'https://github.com/frontend', name: 'GitHub' },
     { icon: <SiVercel />, url: 'https://vercel.com/seu-usuario', name: 'Vercel' },
-    { icon: <FaLinkedin />, url: 'https://linkedin.com/in/frontend', name: 'LinkedIn' },
+    { icon: <FaLinkedin />, url: 'https://linkedin.com/in/...', name: 'LinkedIn' },
     ];
 
   return (

@@ -7,6 +7,8 @@ import Footer from './Componentes/Footer';
 import Login from './Componentes/Login';
 import ForgotPassword from './Componentes/ForgotPassword';
 import Cadastro from './Componentes/Cadastro';
+import DashboardUsuario from './Componentes/DashboardUsuario';
+import AdminDashboard from './Componentes/AdminDashboard';
 
 // Componente para agrupar o conteúdo da página inicial
 const HomePage = () => (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/esqueci-senha" element={<ForgotPassword />} />
           <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/dashboard" element={<DashboardUsuario />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
       </main>
       <Footer />

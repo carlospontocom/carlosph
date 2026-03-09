@@ -1,15 +1,32 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../Config/Database.js';
 import Campo from '../Campo';
 import Button from '../Button';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Tentativa de login com:', { email, password });
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // UID do Administrador
+      const ADMIN_UID = 'a1oVPW1uDyeyrtKsEGsR1e1DEcF2';
+
+      if (user.uid === ADMIN_UID) {
+        navigate('/admin');
+      } else {
+        navigate('/dashboard');
+      }
+    } catch (error) {
+      alert("Dados não encontrados. Tente novamente!");
+    }
   };
 
   return (
@@ -44,6 +61,13 @@ const Login = () => {
             <div className="mt-6 text-right">
               <Link to="/esqueci-senha" className="text-sm text-cyan-600 hover:underline">
                 Esqueceu a senha?
+              </Link>
+            </div>
+
+            <div className="mt-4 text-center text-sm text-gray-600">
+              Não tem uma conta?{' '}
+              <Link to="/cadastro" className="text-cyan-600 hover:underline font-medium">
+                Cadastre-se
               </Link>
             </div>
 
