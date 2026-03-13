@@ -1,29 +1,41 @@
-# Portfólio de Desenvolvedor Frontend
+# Sistema de Gerenciamento de Projetos e Portfólio
 
-Este é um portfólio web moderno e interativo, projetado para apresentar as habilidades, projetos e a trajetória de um Desenvolvedor Frontend com conhecimento Full Stack. O projeto foi desenvolvido com foco em React, Vite, Tailwind CSS e Firebase.
+Este é um projeto full-stack que combina um portfólio de desenvolvedor com um sistema completo de gerenciamento de projetos e um chat em tempo real para comunicação com clientes. A aplicação foi desenvolvida com React, Vite, Tailwind CSS e Firebase.
 
 ## Visão Geral do Projeto
 
-O objetivo é apresentar de forma clara e profissional as competências do desenvolvedor. O design foi concebido para ser clean, atraente e totalmente responsivo, proporcionando uma experiência de usuário de alta qualidade em qualquer dispositivo.
+O projeto oferece duas interfaces distintas:
+
+1.  **Interface do Cliente:** Permite que os clientes se cadastrem, façam login, criem, gerenciem e aprovem projetos, além de se comunicarem com o administrador através de um chat em tempo real.
+2.  **Interface do Administrador:** Um painel de controle completo para o administrador gerenciar todos os projetos, atualizar seus status e se comunicar com os clientes.
 
 ## Tecnologias Utilizadas
 
-- **Frontend:** React, Vite, Tailwind CSS
-- **Backend/Infraestrutura:** Firebase (Hosting)
-- **Serviço de Email:** EmailJS (integrado no formulário de contato)
-- **Ícones:** React Icons
+*   **Frontend:** React, Vite, Tailwind CSS
+*   **Backend e Banco de Dados:** Firebase (Firestore, Authentication, Hosting)
+*   **Roteamento:** React Router
+*   **Ícones:** React Icons
 
----
+## Funcionalidades Principais
 
-## Funcionalidades
+### Para Clientes:
 
-- **Barra de Navegação Responsiva:** Navegação fixa no topo com menu "hambúrguer" para dispositivos móveis.
-- **Seção de Apresentação (Hero):** Um primeiro impacto forte, resumindo as competências e a experiência do desenvolvedor.
-- **Seção de Projetos:** Exibição dos projetos mais relevantes em um layout de grid com um modal para detalhes.
-- **Formulário de Contato com Validação:** Permite que visitantes entrem em contato diretamente, com validação de dados em tempo real.
-- **Rodapé:** Links para redes sociais, informações de contato e copyright.
+*   **Autenticação:** Cadastro, login e recuperação de senha.
+*   **Dashboard do Usuário:**
+    *   Criação, edição e exclusão de projetos (com limite de 3).
+    *   Aprovação de orçamentos de projetos.
+    *   Visualização do status dos projetos.
+*   **Chat em Tempo Real:** Comunicação direta com o administrador.
 
----
+### Para o Administrador:
+
+*   **Painel de Controle Centralizado:**
+    *   Visualização de todos os projetos de todos os clientes.
+    *   Atualização do status dos projetos (Pendente, Em andamento, Concluído, Cancelado).
+    *   Exclusão de projetos.
+*   **Gerenciamento de Comunicação:**
+    *   Chat em tempo real com todos os clientes.
+    *   Notificações de mensagens não lidas.
 
 ## Como Executar o Projeto Localmente
 
@@ -51,86 +63,16 @@ Para clonar e executar este projeto em sua máquina local, siga estas etapas:
 
     O site estará disponível em `http://localhost:5173`.
 
----
+## Estrutura do Projeto
 
-## Deploy
-
-O projeto está configurado para deploy contínuo no Firebase Hosting.
-
-1.  **Gere a build de produção:**
-    ```bash
-    npm run build
-    ```
-
-2.  **Faça o deploy para o Firebase:**
-    ```bash
-    firebase deploy --only hosting
-    ```
-
----
-
-## Documentação da API (Swagger Básico)
-
-Apesar da implementação atual usar EmailJS no lado do cliente, esta seção documenta como um endpoint de API para o formulário de contato se comportaria.
-
-### Endpoint: `/api/contact`
-
-#### Método: `POST`
-
-Envia os dados do formulário de contato para um serviço de backend que processaria e enviaria o email.
-
-#### Descrição
-
-Este endpoint é responsável por receber os dados do formulário, validá-los e, se válidos, enviar um email para o administrador do portfólio.
-
-#### Corpo da Requisição (Request Body)
-
-```json
-{
-  "nome": "string",
-  "email": "string (formato de email)",
-  "assunto": "string",
-  "mensagem": "string"
-}
-```
-
-#### Respostas (Responses)
-
--   **`200 OK`** (Sucesso)
-
-    Indica que o email foi enviado com sucesso.
-
-    ```json
-    {
-      "status": "success",
-      "message": "Email enviado com sucesso!"
-    }
-    ```
-
--   **`400 Bad Request`** (Erro de Validação)
-
-    Indica que os dados enviados eram inválidos. O corpo da resposta contém os erros específicos.
-
-    ```json
-    {
-      "status": "error",
-      "message": "Dados inválidos fornecidos.",
-      "errors": {
-        "nome": "O campo nome é obrigatório.",
-        "email": "O formato do email é inválido.",
-        "assunto": "O campo assunto é obrigatório.",
-        "mensagem": "O campo mensagem é obrigatório."
-      }
-    }
-    ```
-
--   **`500 Internal Server Error`** (Erro no Servidor)
-
-    Indica que ocorreu um erro no servidor ao tentar enviar o email.
-
-    ```json
-    {
-      "status": "error",
-      "message": "Ocorreu um erro interno no servidor."
-    }
-    ```
+*   **`src/`**: Contém todo o código-fonte da aplicação.
+    *   **`Componentes/`**: Onde todos os componentes React estão localizados.
+        *   **`AdminDashboard.jsx`**: Painel de controle do administrador.
+        *   **`DashboardUsuario.jsx`**: Painel de controle do cliente.
+        *   **`Chat.jsx`**: Componente de chat em tempo real.
+        *   **`Login.jsx`**, **`Cadastro.jsx`**, **`ForgotPassword.jsx`**: Componentes de autenticação.
+        *   **`Home.jsx`**, **`Projetos.jsx`**, **`Contato.jsx`**: Componentes do portfólio.
+    *   **`main.jsx`**: Ponto de entrada da aplicação React.
+    *   **`App.jsx`**: Define as rotas da aplicação.
+*   **`firebase.json`**: Arquivo de configuração do Firebase.
+*   **`package.json`**: Lista as dependências e scripts do projeto.

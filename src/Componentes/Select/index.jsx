@@ -24,7 +24,7 @@ const Select = ({ label, options, value, onChange, error, name }) => {
           </option>
         ))}
       </select>
-      <div className="h-5 mt-1">
+      <div className="h-0 mt-0">
         {error && <p className="text-red-500 text-xs italic">{error}</p>}
       </div>
     </div>

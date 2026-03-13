@@ -1,14 +1,28 @@
 import React, { useState } from 'react';
 import Card from '../Card';
 import Modal from '../Modal';
+import { MessageSquare } from 'lucide-react';
 
 // --- Ícones para os Cards ---
 const CalendarIcon = () => (
     <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
 );
 
-const BlogIcon = () => (
-    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+const ChatIcon = () => (
+  <svg 
+    className="w-10 h-10" 
+    fill="none" 
+    stroke="currentColor" 
+    viewBox="0 0 24 24" 
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth="2" 
+      d="固定8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+    />
+  </svg>
 );
 
 const ChecklistIcon = () => (
@@ -26,36 +40,50 @@ const Projetos = () => {
 
   const projectData = [
     {
-      title: 'Agendamento Online',
+      title: 'Agenda Online',
       icon: <CalendarIcon />,
       bgColor: 'bg-purple-600',
       description: 'Sistema de agendamento para prestadores de serviços com notificações e calendário.',
       technologies: ['React JS', 'Node.js (Básico)', 'Firebase'],
-      functionalities: ['Calendário interativo', 'Notificações por email', 'Cancelamento/remarcação'],
+      functionalities: ['Calendário interativo', 'Notificações por email', 'Cancelamento e remarcação'],
       demoLink: '#',
       modalContent: {
         detailedDescription: 'Este sistema robusto foi desenvolvido para otimizar a gestão de agendamentos de profissionais autônomos e pequenas empresas. A plataforma oferece uma experiência de usuário fluida, desde a visualização de horários disponíveis até a confirmação do serviço, tudo de forma integrada e automatizada.',
         detailedFunctionalities: [
           { title: 'Calendário Interativo', description: 'Permite que os clientes visualizem rapidamente os horários livres e agendem com apenas alguns cliques, evitando conflitos de agenda.' },
           { title: 'Notificações por Email', description: 'Confirmações, lembretes e avisos de cancelamento são enviados automaticamente, reduzindo o não comparecimento (no-show).' },
-          { title: 'Cancelamento/Remarcação Flexível', description: 'Regras de negócio personalizáveis para cancelamentos e remarcações, dando autonomia ao usuário dentro de limites pré-definidos.' },
+          { title: 'Cancelamento e Remarcação Flexível', description: 'Regras de negócio personalizáveis para cancelamentos e remarcações, dando autonomia ao usuário dentro de limites pré-definidos.' },
         ]
       }
     },
     {
-      title: 'Blog Platform',
-      icon: <BlogIcon />,
+      title: 'Chat Firebase',
+      icon: <MessageSquare />,
       bgColor: 'bg-green-500',
-      description: 'Plataforma de blog com sistema de comentários e dashboard administrativo.',
-      technologies: ['JavaScript', 'Node.js (Básico)', 'REST API', 'Firebase'],
-      functionalities: ['Sistema de comentários', 'Categorias e tags', 'Dashboard'],
+      description: 'Aplicação de chat em tempo real com interface intuitiva e sincronização instantânea.',
+      technologies: ['React JS', 'Tailwind CSS', 'Firebase'],
+      functionalities: [
+        'Mensagens em tempo real',
+        'Indicação de mensagem não lida',
+        'Informações do contato',
+        'Indicação de data e horário de envio'
+      ],
       demoLink: '#',
       modalContent: {
-        detailedDescription: 'Uma plataforma completa para criação e gerenciamento de conteúdo. O projeto foi pensado para ser intuitivo para o escritor e administrador, com um painel de controle que centraliza a moderação de comentários e a organização do conteúdo.',
+        detailedDescription: 'Um sistema de chat completo desenvolvido para proporcionar uma experiência de comunicação fluida. Utiliza o Firebase para garantir que as mensagens sejam entregues instantaneamente, com foco em uma interface limpa e responsiva inspirada nos melhores apps de mensagens atuais.',
         detailedFunctionalities: [
-          { title: 'Sistema de Comentários', description: 'Engaje sua audiência com um sistema de comentários em tempo real, com threads de respostas e moderação.' },
-          { title: 'Categorias e Tags', description: 'Organize as publicações de forma lógica e otimizada para SEO, facilitando a navegação do usuário e a descoberta de conteúdo.' },
-          { title: 'Dashboard Administrativo', description: 'Um painel central para gerenciar todas as publicações, aprovar comentários, visualizar estatísticas de acesso e gerenciar usuários.' },
+          { 
+            title: 'Comunicação Instantânea', 
+            description: 'Troca de mensagens em tempo real com persistência de dados no Firestore, garantindo que o histórico nunca seja perdido.' 
+          },
+          { 
+            title: 'Gestão de Status', 
+            description: 'Sistema inteligente que identifica mensagens pendentes de leitura e exibe metadados cruciais como o timestamp (horário) exato do envio.' 
+          },
+          { 
+            title: 'Perfis e Contatos', 
+            description: 'Visualização detalhada dos dados do contato, permitindo identificar com quem você está conversando de forma rápida e segura.' 
+          },
         ]
       }
     },
@@ -102,7 +130,7 @@ const Projetos = () => {
     <section className="py-20 bg-gray-200" id="projetos">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-12">Meus Projetos</h2>
-        <div className="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
+        <div className="flex flex-col gap-6 md:grid md:grid-cols-3">
           {projectData.map((project) => (
             <Card 
               key={project.title} 
@@ -115,10 +143,10 @@ const Projetos = () => {
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         {selectedProject && selectedProject.modalContent && (
-          <>
+             <div className="max-h-[70vh] overflow-y-auto">
             <div className={`p-6 text-white flex items-center rounded-t-lg ${selectedProject.bgColor}`}>
                 <div className="mr-4">{selectedProject.icon}</div>
-                <h3 className="text-3xl font-bold">{selectedProject.title}</h3>
+                <h3 className="text-4xl">{selectedProject.title}</h3>
             </div>
             <div className="p-8">
               <p className="text-gray-700 text-lg mb-6">{selectedProject.modalContent.detailedDescription}</p>
@@ -143,7 +171,7 @@ const Projetos = () => {
                 ))}
               </ul>
             </div>
-          </>
+          </div>
         )}
       </Modal>
     </section>

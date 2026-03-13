@@ -12,16 +12,16 @@ const ForgotPassword = () => {
   };
 
   return (
-    <section className="bg-gray-200 py-20 flex items-center justify-center">
+    <section className="bg-gray-200 flex items-center justify-center min-h-[80vh] pt-[20vh] pb-[12vh] px-2">
       <div className="max-w-md w-full mx-auto">
-        <div className="bg-gray-50 rounded-2xl shadow-xl p-8">
-          <div className="text-center mb-10">
+        <div className="bg-gray-50 rounded-2xl shadow-xl p-4">
+          <div className="text-center mb-4">
             <h2 className="text-3xl font-bold text-gray-900">Recuperar Senha</h2>
-            <p className="mt-2 text-gray-600">Insira seu e-mail para receber o link de redefinição.</p>
+            <p className="mt-4 text-gray-600">Insira seu e-mail para receber o link de redefinição.</p>
           </div>
 
           <form onSubmit={handleSubmit}>
-            <div className="space-y-6">
+            <div className="space-y-1">
               <Campo 
                 label="Seu e-mail"
                 placeholder="email@exemplo.com"

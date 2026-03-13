@@ -9,7 +9,7 @@ const CheckIcon = () => (
     <svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
 );
 
-const Card = ({ title, icon, bgColor, description, technologies, functionalities, demoLink, onSaibaMaisClick }) => {
+const Card = ({ title, icon, bgColor, description, technologies, functionalities, onSaibaMaisClick }) => {
     
   const techColorMap = {
     'React JS': 'bg-blue-200 text-blue-800',
@@ -23,7 +23,7 @@ const Card = ({ title, icon, bgColor, description, technologies, functionalities
 
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full transition-transform transform hover:-translate-y-2">
-      <div className={`p-6 text-white flex items-center ${bgColor}`}>
+      <div className={`p-4 text-white flex items-center min-h-[200px] ${bgColor}`}>
         <div className="mr-4">{icon}</div>
         <h3 className="text-2xl font-bold">{title}</h3>
       </div>

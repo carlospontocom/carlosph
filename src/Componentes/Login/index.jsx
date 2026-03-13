@@ -30,16 +30,16 @@ const Login = () => {
   };
 
   return (
-    <section className="bg-gray-200 py-20 flex items-center justify-center">
+    <section className="bg-gray-100 py-20 flex items-center justify-center">
       <div className="max-w-md w-full mx-auto">
         <div className="bg-gray-50 rounded-2xl shadow-xl p-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-gray-900">Acessar Painel</h2>
-            <p className="mt-2 text-gray-600">Bem-vindo de volta!</p>
+            <p className="mt-2 text-gray-600">Bem-vindo!</p>
           </div>
 
           <form onSubmit={handleSubmit}>
-            <div className="space-y-6">
+            <div className="space-y-5">
               <Campo 
                 label="Seu e-mail"
                 placeholder="email@exemplo.com"
@@ -58,8 +58,8 @@ const Login = () => {
               />
             </div>
 
-            <div className="mt-6 text-right">
-              <Link to="/esqueci-senha" className="text-sm text-cyan-600 hover:underline">
+            <div className="text-center mt-4">
+              <Link to="/esqueci-senha" className="hover:underline text-cyan-500">
                 Esqueceu a senha?
               </Link>
             </div>
